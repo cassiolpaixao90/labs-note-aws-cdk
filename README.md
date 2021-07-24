@@ -1,6 +1,6 @@
 
 
-# LabsNotesAwsCdk
+# Labs Notes Aws With Cdk
 
 This project was generated using [Nx](https://nx.dev).
 
