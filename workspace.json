@@ -43,9 +43,30 @@
         }
       }
     },
+    "helpers": {
+      "root": "libs/helpers",
+      "sourceRoot": "libs/helpers/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/helpers/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/helpers"],
+          "options": {
+            "jestConfig": "libs/helpers/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "notes": {
       "root": "apps/notes",
-      "sourceRoot": "apps/notes/src",
+      "sourceRoot": "apps/notes",
       "projectType": "application",
       "targets": {
         "build": {
@@ -57,10 +78,22 @@
             "tsConfig": "apps/notes/tsconfig.app.json"
           }
         },
-        "serve": {
-          "executor": "@nrwl/node:execute",
+        "deploy": {
+          "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "buildTarget": "notes:build"
+            "cwd": "apps/notes",
+            "commands": [
+              "cross-env NODE_ENV=prod node esbuild.js",
+              "npx cdk deploy --require-approval=never"
+            ]
+          }
+        },
+        "destroy": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "apps/notes",
+            "command": "npx cdk destroy",
+            "parallel": false
           }
         },
         "lint": {
