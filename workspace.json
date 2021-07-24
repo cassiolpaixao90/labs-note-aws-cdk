@@ -1,7 +1,87 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "adapters": {
+      "root": "libs/adapters",
+      "sourceRoot": "libs/adapters/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/adapters/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/adapters"],
+          "options": {
+            "jestConfig": "libs/adapters/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "exceptions": {
+      "root": "libs/exceptions",
+      "sourceRoot": "libs/exceptions/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/exceptions/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/exceptions"],
+          "options": {
+            "jestConfig": "libs/exceptions/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "notes": {
+      "root": "apps/notes",
+      "sourceRoot": "apps/notes/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/notes",
+            "main": "apps/notes/src/main.js",
+            "tsConfig": "apps/notes/tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "notes:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/notes/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/notes"],
+          "options": {
+            "jestConfig": "apps/notes/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/node"
+  },
+  "defaultProject": "notes"
 }
