@@ -20,36 +20,36 @@ export class AppStack extends cdk.Stack {
     });
 
     /* DynamoDb Objects */
-    const notesTable = new dynamodb.Table(this, 'NotesDynamoDB', {
-			tableName: 'NotesTable',
+    const auctionsTable = new dynamodb.Table(this, 'AuctionsDynamoDB', {
+			tableName: 'AuctionsTable',
 			partitionKey: { name: 'id', type: dynamodb.AttributeType.STRING },
 			billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-			removalPolicy: cdk.RemovalPolicy.DESTROY
+			removalPolicy: cdk.RemovalPolicy.DESTROY,
 		});
 
-    const create = new lambda.NodejsFunction(this, 'NotesLambdaCreate', {
-      functionName: 'NotesLambdaCreate',
-      description: 'create a notes',
+    const create = new lambda.NodejsFunction(this, 'AuctionsLambdaCreate', {
+      functionName: 'AuctionsLambdaCreate',
+      description: 'create a auctions',
       entry: path.join(__dirname, '..', 'src', 'lambdas', 'create', 'index.js'),
       memorySize: 128,
       role: lambdaRoles,
       runtime: Runtime.NODEJS_14_X,
-      environment: { TABLE_NAME: notesTable.tableName },
+      environment: { TABLE_NAME: auctionsTable.tableName },
       timeout: cdk.Duration.seconds(200),
       tracing: Tracing.ACTIVE
     });
 
-    notesTable.grantReadWriteData(create);
+    auctionsTable.grantReadWriteData(create);
 
     /* Create Lambda Policy */
-    new iam.Policy(this, 'NotesPolicy', {
-      policyName: 'NotesPolicy',
+    new iam.Policy(this, 'AuctionsPolicy', {
+      policyName: 'AuctionsPolicy',
       roles: [lambdaRoles],
       statements: [
         new iam.PolicyStatement({
           effect: iam.Effect.ALLOW,
           actions: ['dynamodb:*'],
-          resources: [notesTable.tableArn]
+          resources: [auctionsTable.tableArn]
         }),
         new iam.PolicyStatement({
           effect: iam.Effect.ALLOW,
@@ -59,11 +59,11 @@ export class AppStack extends cdk.Stack {
       ]
     });
 
-    const appApi = new RestApi(this, 'NotesApiGateway', {
-      restApiName: 'NotesApiGateway'
+    const appApi = new RestApi(this, 'AuctionsApiGateway', {
+      restApiName: 'AuctionsApiGateway'
     });
 
-    const items = appApi.root.addResource('api').addResource('notes');
+    const items = appApi.root.addResource('api').addResource('auction');
 
     const createIntegration = new LambdaIntegration(create);
     items.addMethod('POST', createIntegration);

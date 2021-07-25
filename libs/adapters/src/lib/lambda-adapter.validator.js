@@ -1,5 +1,5 @@
 
-import { BadRequestException } from '@labs-notes-aws-cdk/exceptions';
+import { BadRequestException } from '@labs-sample-aws-cdk/exceptions';
 
 export const ValidatorAdapter = ({ schema, keys = [] }) => ({
 	before: async (handler) => {

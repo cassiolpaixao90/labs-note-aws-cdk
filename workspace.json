@@ -64,24 +64,24 @@
         }
       }
     },
-    "notes": {
-      "root": "apps/notes",
-      "sourceRoot": "apps/notes",
+    "auctions": {
+      "root": "apps/auctions",
+      "sourceRoot": "apps/auctions",
       "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/notes",
-            "main": "apps/notes/src/main.js",
-            "tsConfig": "apps/notes/tsconfig.app.json"
+            "outputPath": "dist/apps/auctions",
+            "main": "apps/auctions/src/main.js",
+            "tsConfig": "apps/auctions/tsconfig.app.json"
           }
         },
         "deploy": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "cwd": "apps/notes",
+            "cwd": "apps/auctions",
             "commands": [
               "cross-env NODE_ENV=prod node esbuild.js",
               "npx cdk deploy --require-approval=never"
@@ -91,7 +91,7 @@
         "destroy": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "cwd": "apps/notes",
+            "cwd": "apps/auctions",
             "command": "npx cdk destroy",
             "parallel": false
           }
@@ -99,14 +99,14 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/notes/**/*.js"]
+            "lintFilePatterns": ["apps/auctions/**/*.js"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/notes"],
+          "outputs": ["coverage/apps/auctions"],
           "options": {
-            "jestConfig": "apps/notes/jest.config.js",
+            "jestConfig": "apps/auctions/jest.config.js",
             "passWithNoTests": true
           }
         }

@@ -1,5 +1,4 @@
-import { Created } from '@labs-notes-aws-cdk/helpers';
-
+import { Created } from '@labs-sample-aws-cdk/helpers';
 
 export class CreateHandler {
     constructor({ createService }){

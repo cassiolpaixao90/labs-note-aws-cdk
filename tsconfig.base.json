@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@labs-notes-aws-cdk/adapters": ["libs/adapters/src/index.js"],
-      "@labs-notes-aws-cdk/exceptions": ["libs/exceptions/src/index.js"],
-      "@labs-notes-aws-cdk/helpers": ["libs/helpers/src/index.js"]
+      "@labs-sample-aws-cdk/adapters": ["libs/adapters/src/index.js"],
+      "@labs-sample-aws-cdk/exceptions": ["libs/exceptions/src/index.js"],
+      "@labs-sample-aws-cdk/helpers": ["libs/helpers/src/index.js"]
     }
   },
   "exclude": ["node_modules", "tmp"]

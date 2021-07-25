@@ -1,8 +1,8 @@
 import middy from '@middy/core';
 import JsonBodyParser from '@middy/http-json-body-parser';
 import HttpEventNormalizer from '@middy/http-event-normalizer';
-import { ErrorHandlerAdapter, HandlerAdapter, ValidatorAdapter } from '@labs-notes-aws-cdk/adapters';
-import { makeHttpError } from '@labs-notes-aws-cdk/helpers';
+import { ErrorHandlerAdapter, HandlerAdapter, ValidatorAdapter } from '@labs-sample-aws-cdk/adapters';
+import { makeHttpError } from '@labs-sample-aws-cdk/helpers';
 
 import { createInstance } from './create.factory';
 import { CreateSchema as schema } from './create.validator';

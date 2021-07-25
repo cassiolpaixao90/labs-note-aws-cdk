@@ -1,5 +1,5 @@
 {
-  "name": "labs-notes-aws-cdk",
+  "name": "labs-sample-aws-cdk",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -32,6 +32,7 @@
     "@middy/core": "^1.5.2",
     "@middy/http-event-normalizer": "^1.5.2",
     "@middy/http-json-body-parser": "^1.5.2",
+    "aws-sdk": "^2.953.0",
     "joi": "^17.4.0",
     "tslib": "^2.0.0",
     "uuid": "^8.3.2"
