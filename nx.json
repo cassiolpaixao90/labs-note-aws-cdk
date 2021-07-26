@@ -30,13 +30,16 @@
     "adapters": {
       "tags": []
     },
+    "auctions": {
+      "tags": []
+    },
+    "datasources": {
+      "tags": []
+    },
     "exceptions": {
       "tags": []
     },
     "helpers": {
-      "tags": []
-    },
-    "auctions": {
       "tags": []
     }
   }

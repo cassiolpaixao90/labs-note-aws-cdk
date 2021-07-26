@@ -22,48 +22,6 @@
         }
       }
     },
-    "exceptions": {
-      "root": "libs/exceptions",
-      "sourceRoot": "libs/exceptions/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/exceptions/**/*.js"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/exceptions"],
-          "options": {
-            "jestConfig": "libs/exceptions/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "helpers": {
-      "root": "libs/helpers",
-      "sourceRoot": "libs/helpers/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/helpers/**/*.js"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/helpers"],
-          "options": {
-            "jestConfig": "libs/helpers/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "auctions": {
       "root": "apps/auctions",
       "sourceRoot": "apps/auctions",
@@ -107,6 +65,69 @@
           "outputs": ["coverage/apps/auctions"],
           "options": {
             "jestConfig": "apps/auctions/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "datasources": {
+      "root": "libs/datasources",
+      "sourceRoot": "libs/datasources/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/datasources/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/datasources"],
+          "options": {
+            "jestConfig": "libs/datasources/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "exceptions": {
+      "root": "libs/exceptions",
+      "sourceRoot": "libs/exceptions/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/exceptions/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/exceptions"],
+          "options": {
+            "jestConfig": "libs/exceptions/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "helpers": {
+      "root": "libs/helpers",
+      "sourceRoot": "libs/helpers/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/helpers/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/helpers"],
+          "options": {
+            "jestConfig": "libs/helpers/jest.config.js",
             "passWithNoTests": true
           }
         }

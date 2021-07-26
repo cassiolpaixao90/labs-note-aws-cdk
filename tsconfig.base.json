@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@labs-notes-aws-cdk/datasources": ["libs/datasources/src/index.js"],
       "@labs-sample-aws-cdk/adapters": ["libs/adapters/src/index.js"],
       "@labs-sample-aws-cdk/exceptions": ["libs/exceptions/src/index.js"],
       "@labs-sample-aws-cdk/helpers": ["libs/helpers/src/index.js"]

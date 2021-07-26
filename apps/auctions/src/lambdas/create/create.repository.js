@@ -1,16 +1,7 @@
-import { DynamoDB } from 'aws-sdk';
+import { DynamoDbDataSource } from '@labs-notes-aws-cdk/datasources';
 
-export class CreateRepository {
+export class CreateRepository extends DynamoDbDataSource {
   constructor(){
-    this.dynamodb = new DynamoDB.DocumentClient();
-  }
-
-  async create(auction){
-    await this.dynamodb.put({
-      TableName: 'AuctionsTable',
-      Item: auction
-    }).promise();
-
-    return auction;
+    super('AuctionsTable')
   }
 }
