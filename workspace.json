@@ -22,34 +22,43 @@
         }
       }
     },
-    "auctions": {
-      "root": "apps/auctions",
-      "sourceRoot": "apps/auctions",
-      "projectType": "application",
+    "aws": {
+      "root": "libs/aws",
+      "sourceRoot": "libs/aws/src",
+      "projectType": "library",
       "targets": {
-        "build": {
-          "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "outputPath": "dist/apps/auctions",
-            "main": "apps/auctions/src/main.js",
-            "tsConfig": "apps/auctions/tsconfig.app.json"
+            "lintFilePatterns": ["libs/aws/**/*.js"]
           }
         },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/aws"],
+          "options": {
+            "jestConfig": "libs/aws/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "countries": {
+      "root": "apps/services/countries",
+      "sourceRoot": "apps/services/countries",
+      "projectType": "application",
+      "targets": {
         "deploy": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "cwd": "apps/auctions",
-            "commands": [
-              "cross-env NODE_ENV=prod node esbuild.js",
-              "npx cdk deploy --require-approval=never"
-            ]
+            "cwd": "apps/services/countries",
+            "commands": ["node esbuild.js", "npx cdk deploy --require-approval=never"]
           }
         },
         "destroy": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "cwd": "apps/auctions",
+            "cwd": "apps/services/countries",
             "command": "npx cdk destroy",
             "parallel": false
           }
@@ -57,14 +66,14 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/auctions/**/*.js"]
+            "lintFilePatterns": ["apps/services/countries/**/*.js"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/auctions"],
+          "outputs": ["coverage/apps/services/countries"],
           "options": {
-            "jestConfig": "apps/auctions/jest.config.js",
+            "jestConfig": "apps/services/countries/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -128,6 +137,84 @@
           "outputs": ["coverage/libs/helpers"],
           "options": {
             "jestConfig": "libs/helpers/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "interceptors": {
+      "root": "libs/interceptors",
+      "sourceRoot": "libs/interceptors/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/interceptors/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/interceptors"],
+          "options": {
+            "jestConfig": "libs/interceptors/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "repositories": {
+      "root": "libs/repositories",
+      "sourceRoot": "libs/repositories/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/repositories/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/repositories"],
+          "options": {
+            "jestConfig": "libs/repositories/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "teams": {
+      "root": "apps/services/teams",
+      "sourceRoot": "apps/services/teams",
+      "projectType": "application",
+      "targets": {
+        "deploy": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "apps/services/teams",
+            "commands": ["node esbuild.js", "npx cdk deploy --require-approval=never"]
+          }
+        },
+        "destroy": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "apps/services/teams",
+            "command": "npx cdk destroy",
+            "parallel": false
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/services/teams/**/*.js"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/services/countries"],
+          "options": {
+            "jestConfig": "apps/services/countries/jest.config.js",
             "passWithNoTests": true
           }
         }

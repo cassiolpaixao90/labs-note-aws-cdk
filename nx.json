@@ -1,5 +1,5 @@
 {
-  "npmScope": "labs-notes-aws-cdk",
+  "npmScope": "labs-api-sport-io",
   "affected": {
     "defaultBase": "master"
   },
@@ -30,7 +30,10 @@
     "adapters": {
       "tags": []
     },
-    "auctions": {
+    "aws": {
+      "tags": []
+    },
+    "countries": {
       "tags": []
     },
     "datasources": {
@@ -40,6 +43,15 @@
       "tags": []
     },
     "helpers": {
+      "tags": []
+    },
+    "interceptors": {
+      "tags": []
+    },
+    "repositories": {
+      "tags": []
+    },
+    "teams": {
       "tags": []
     }
   }

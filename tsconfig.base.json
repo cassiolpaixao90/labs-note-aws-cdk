@@ -9,16 +9,13 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
-    "module": "esnext",
+    "module": "CommonJS",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@labs-notes-aws-cdk/datasources": ["libs/datasources/src/index.js"],
-      "@labs-sample-aws-cdk/adapters": ["libs/adapters/src/index.js"],
-      "@labs-sample-aws-cdk/exceptions": ["libs/exceptions/src/index.js"],
-      "@labs-sample-aws-cdk/helpers": ["libs/helpers/src/index.js"]
+      "@labs-api-sport-io/datasources": ["libs/datasources/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

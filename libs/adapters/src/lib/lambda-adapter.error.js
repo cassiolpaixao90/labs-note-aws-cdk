@@ -1,10 +1,10 @@
 export const ErrorHandlerAdapter = (fn) => ({
-	onError: (handler, next) => {
+	onError: (handler) => {
 		if (!handler.error) {
-			return next();
+			return Promise.resolve();
 		}
 
 		handler.response = fn(handler.error);
-		return next();
+		return Promise.resolve();
 	}
 });
